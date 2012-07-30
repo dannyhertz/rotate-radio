@@ -58,5 +58,8 @@ module RotateRadio
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # custom config
+    config.creds = YAML.load_file("#{Rails.root}/config/credentials.yml")[Rails.env]
   end
 end
