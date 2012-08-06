@@ -1,3 +1,0 @@
-class HeavyRotationsController < ApplicationController
-
-end

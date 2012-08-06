@@ -14,26 +14,29 @@
 ActiveRecord::Schema.define(:version => 20120729015355) do
 
   create_table "artists", :force => true do |t|
-    t.string   "rdio_artist_it"
-    t.string   "twitter_user_id"
-    t.string   "twitter_avatar_url"
+    t.string   "name"
+    t.string   "rdio_id"
+    t.string   "rdio_url"
+    t.string   "rdio_avatar"
+    t.string   "twitter_id"
     t.string   "twitter_username"
-    t.datetime "last_checked"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.string   "twitter_avatar"
+    t.boolean  "verified",         :default => false
+    t.boolean  "flagged",          :default => false
+    t.date     "last_checked"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
-  create_table "blacklists", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "artist_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "artists_rotations", :id => false, :force => true do |t|
+    t.integer "artist_id"
+    t.integer "rotation_id"
   end
 
-  create_table "heavy_rotations", :force => true do |t|
-    t.integer  "artist_id"
+  create_table "follow_exceptions", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "rank"
+    t.integer  "artist_id"
+    t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120729015355) do
   create_table "providers", :force => true do |t|
     t.integer  "user_id"
     t.string   "uid"
-    t.string   "type"
+    t.string   "service"
     t.string   "url"
     t.string   "username"
     t.string   "token"
@@ -50,10 +53,16 @@ ActiveRecord::Schema.define(:version => 20120729015355) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "rotations", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "avatar_url"
+    t.string   "avatar"
     t.integer  "rotation_size"
     t.integer  "rotation_frequency"
     t.datetime "created_at",         :null => false

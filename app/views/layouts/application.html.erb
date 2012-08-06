@@ -2,13 +2,39 @@
 <html>
 <head>
   <title>RotateRadio</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+          <a href="/" class="brand">Rotate-Radio</a>
+      
+          <ul class="nav pull-right">
+            <li class="dropdown">
+              <% if current_user %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= current_user.name %> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="">Settings</a></li>
+                  <li class="divider"></li>
+                  <li><%= link_to("Sign out", sign_out_path , :method => :delete) %></li>
+                </ul>
+              <% else %>
+                <%= link_to "Sign in with Twitter", provider_auth_path(:twitter) %>
+              <% end %>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
 
-<%= yield %>
+  <div class="container content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
