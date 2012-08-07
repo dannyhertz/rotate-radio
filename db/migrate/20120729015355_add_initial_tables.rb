@@ -56,7 +56,9 @@ class AddInitialTables < ActiveRecord::Migration
     drop_table :providers
     drop_table :users
     drop_table :artists
-    drop_table :heavy_rotations
+    drop_table :rotations
     drop_table :blacklists
+    drop_table :artists_rotations
+    drop_table :follow_exceptions
   end
 end

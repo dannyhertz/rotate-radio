@@ -36,7 +36,7 @@ class RdioClient
       :user => @user ? @user.service_provider(:rdio).uid : nil,
       :start => 0,
       :limit => 10,
-      :type => 'artists'
+      :type => 'albums'
     })
 
     response = @client.call('getHeavyRotation', options)

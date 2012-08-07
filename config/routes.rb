@@ -1,7 +1,7 @@
 RotateRadio::Application.routes.draw do
 
   # home
-  root :to => 'rotations#index'
+  root :to => 'defaults#index'
 
   # all the oauth bullshit
   match '/auth/:provider/callback' => 'sessions#create', :as => :provider_auth

@@ -5,21 +5,21 @@ class Artist < ActiveRecord::Base
   has_and_belongs_to_many :rotations
   has_many :follow_exceptions
 
-  def self.find_or_create_from_rdio(rdio_response)
-    existing_artist = find_by_rdio_id(rdio_response['key'])
+  def self.find_or_create_from_rdio_album(rdio_response)
+    existing_artist = find_by_rdio_id(rdio_response['artistKey'])
     return existing_artist if existing_artist
 
     artist_attrs = {
-      :name => rdio_response['name'],
-      :rdio_id => rdio_response['key'],
-      :rdio_url => rdio_response['shortUrl'],
+      :name => rdio_response['artist'],
+      :rdio_id => rdio_response['artistKey'],
+      :rdio_url => rdio_response['artistUrl'],
       :rdio_avatar => rdio_response['icon'],
       :last_checked => Date.today
     }
 
     # grab verified twitter info from echo
     echo_client = EchoClient.global_init
-    twitter_handle = echo_client.twitter_handle_for_rdio_id(rdio_response['key'])
+    twitter_handle = echo_client.twitter_handle_for_rdio_id(rdio_response['artistKey'])
 
     # merge twitter attrs if we got their info
     if twitter_handle

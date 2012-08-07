@@ -5,4 +5,5 @@ class Provider < ActiveRecord::Base
   belongs_to :user
 
   scope :for_service, lambda { |provider| where(:service => provider) }
+  
 end

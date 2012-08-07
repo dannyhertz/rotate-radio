@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
     rotation_results = rdio_client.heavy_rotation(options)
     return unless rotation_results
 
-    next_rotation = Rotation.create_from_rdio_artists(rotation_results)
+    next_rotation = Rotation.create_from_rdio_rotation(rotation_results)
     rotations << next_rotation
 
     next_rotation
