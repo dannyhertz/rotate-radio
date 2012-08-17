@@ -15,7 +15,15 @@
 //= require twitter/bootstrap
 //= require hogan.js
 //
-//= require underscore
-//= require backbone
+//= require underscore.module
+//= require backbone.module
+//
+//= require_tree ./templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require routers.module
+//
+//= require main.js
 //
 //= require_tree .

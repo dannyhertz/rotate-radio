@@ -9,7 +9,11 @@ RotateRadio::Application.routes.draw do
   resources :sessions
   match 'sign_out' => 'sessions#destroy', :via => :delete
 
+  resources :artists
 
-  resources :rotations
+  resources :rotations do
+    resources :artists
+  end
+
 
 end

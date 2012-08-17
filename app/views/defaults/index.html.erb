@@ -1,13 +1,2 @@
-<section class="rotation-holder">
-  <h2>Current Heavy Rotation</h2>
-</section>
-
-<% content_for :head do %>
-  <script>
-    $(function() {
-      var RotationView = require('views/rotations/rotation_view');
-      var rotationView = new RotationView();
-      $('.rotation-holder').append(rotationView.render().$el);
-    });
-  </script>
-<% end %>
+<div class="content-holder">
+</div>
