@@ -1,7 +1,8 @@
 var Backbone = require('/backbone');
-var Rotation = require('/models/rotation');
+var Rotation = require('/models/rotation'),
+    User = require('/models/user');
 var Rotations = require('/collections/rotations');
-var HomeView = require('/views/rotations/home');
+var HomeView = require('/views/rotations/home_view');
 
 var Router = Backbone.Router.extend({
 
@@ -11,15 +12,20 @@ var Router = Backbone.Router.extend({
     'settings': 'settings'
   },
 
-  initialize: function () {
-    console.log('initializing the router');
+  initialize: function (options) {
+    if (options.currentUser) {
+      this.currentUser = new User(options.currentUser);
+    }
+
     this.$contentHolder = $('.content-holder');
+    this.$contentHolder.empty();
   },
 
   home: function () {
-    var latestRotations = new Rotations();
-    this.homeView = new HomeView({ collection: latestRotations });
-    latestRotations.fetch({ data: { type: 'latest' } });
+    this.homeView = new HomeView({ 
+      currentUser: this.currentUser 
+    });
+    this.currentUser.fetchCurrentRotation();
 
     this.$contentHolder.html(this.homeView.render().$el);
   },

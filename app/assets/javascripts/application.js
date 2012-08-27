@@ -24,6 +24,4 @@
 //= require_tree ./views
 //= require routers.module
 //
-//= require main.js
-//
 //= require_tree .

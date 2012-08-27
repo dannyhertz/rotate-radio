@@ -1,10 +1,9 @@
 var _ = require('/underscore');
 var Backbone = require('/backbone');
-var ArtistView = require('/views/artists/show');
+var ArtistView = require('/views/artists/artist_view');
 
 var RotationView = Backbone.View.extend({
   className: 'rotation',
-
   template: HoganTemplates['rotations/show'],
 
   initialize: function () {},
@@ -21,6 +20,7 @@ var RotationView = Backbone.View.extend({
 
     return this;
   }
+  
 });
 
 module.exports = RotationView;

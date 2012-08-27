@@ -1,13 +1,40 @@
 @import "twitter/bootstrap/variables";
 @import "twitter/bootstrap/mixins";
 
-.navbar-fixed-top .container, .container {
-  width: 720px;
+body {
+  padding-top: 40px;
+}
+
+.container, .header, .navbar-fixed-top .container {
+  width: 760px;
+  margin: 0 auto;
+}
+
+.navbar .nav {
+  margin-right: 0;
+}
+
+.dropdown-menu .divider {
+  margin: 4px 1px;
+}
+
+.notification {
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 40px;
+  left: 50%;
+  .border-radius(0 0 6px 6px);
+  border-top: 0;
+}
+
+.brand {
+  font-size: 24px;
 }
 
 .content {
-  margin-top: 40px;
-  padding: 20px;
+  margin-top: 0px;
+  padding: 20px 0;
 }
 
 .big-auth-link {
@@ -21,4 +48,69 @@
   border: 1px solid #ddd;
   text-align: center;
   line-height: 200px;
+}
+
+.rotation-header {
+  margin: 10px 0;
+  overflow: hidden;
+  h1 {
+    margin: 0;
+    float: left;
+    font-size: 24px;
+  }
+}
+
+.rotation-alert {
+  margin: 15px 0 5px;
+}
+
+.rotation-actions {
+  float: right;
+  .refresh-link, .status-actions {
+    float: left;
+    margin-left: 5px
+  }
+
+  .pause-link, .resume-link {
+    text-align: left;
+    width: 165px;
+    .box-sizing(border-box);
+  }
+
+  .pause-link {
+    display: none;
+  }
+  &.resumed .resume-link {
+    display: none;
+  }
+  &.resumed .pause-link {
+    display: block;
+  }
+}
+
+.rotation-artists {
+  margin: 15px 0 0;
+  list-style-type: none;
+}
+
+.rotation-artist {
+  float: left;
+  margin: 0 20px 20px 0;
+  width: 175px;
+  &:nth-child(4n+4) {
+    margin-right: 0;
+  }
+}
+.artist-avatars {
+  border: 1px solid @grayLighter;
+}
+.artist-name {
+  font-size: 14px;
+  padding: 5px 0;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
 }

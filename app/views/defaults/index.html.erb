@@ -1,2 +1,16 @@
 <div class="content-holder">
 </div>
+
+<script>
+  var Backbone = require('/backbone');
+  var Router = require('/routers');
+
+  $(function () {
+
+    var mainRouter = new Router({ 
+      currentUser: <%= current_user.to_json.html_safe %>
+    });
+    Backbone.history.start();
+
+  });
+</script>

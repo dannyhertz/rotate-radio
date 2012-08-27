@@ -10,6 +10,12 @@ RotateRadio::Application.routes.draw do
   match 'sign_out' => 'sessions#destroy', :via => :delete
 
   resources :artists
+  
+  resources :users do
+    resources :rotations do
+      post 'refresh', :on => :collection
+    end
+  end
 
   resources :rotations do
     resources :artists

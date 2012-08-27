@@ -3,15 +3,13 @@ class RotationsController < ApplicationController
   before_filter :ensure_logged_in
 
   def index
-    rotation_type = params[:type] == 'latest' ? :latest : :standard
-
-    rotations = if rotation_type == :latest
-      current_user.rotations.reverse_order.limit(1)
+    rotations = if params[:user_id]
+      User.find(params[:user_id]).rotations
     else
-      current_user.rotations
+      Rotations.all
     end
     
-    render :json => rotations
+    render :json => rotations.reverse_order
   end
 
   def show
@@ -21,6 +19,16 @@ class RotationsController < ApplicationController
       render :json => rotation
     else
       head :not_found
+    end
+  end
+
+  def refresh
+    new_rotation = current_user.refresh_rotation
+    
+    if new_rotation
+      render :json => next_rotation
+    else
+      head :no_content
     end
   end
 

@@ -5,6 +5,8 @@ class Artist < ActiveRecord::Base
   has_and_belongs_to_many :rotations
   has_many :follow_exceptions
 
+  scope :with_twitter, where("twitter_id <> ''")
+
   def self.find_or_create_from_rdio_album(rdio_response)
     existing_artist = find_by_rdio_id(rdio_response['artistKey'])
     return existing_artist if existing_artist

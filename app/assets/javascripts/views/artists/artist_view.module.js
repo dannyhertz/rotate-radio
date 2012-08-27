@@ -2,7 +2,8 @@ var _ = require('/underscore');
 var Backbone = require('/backbone');
 
 var ArtistView = Backbone.View.extend({
-  className: 'artist',
+  tagName: 'li',
+  className: 'rotation-artist',
 
   template: HoganTemplates['artists/show'],
 
@@ -13,6 +14,7 @@ var ArtistView = Backbone.View.extend({
 
     return this;
   }
+
 });
 
 module.exports = ArtistView;

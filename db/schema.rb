@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729015355) do
+ActiveRecord::Schema.define(:version => 20120818000310) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -65,8 +65,9 @@ ActiveRecord::Schema.define(:version => 20120729015355) do
     t.string   "avatar"
     t.integer  "rotation_size"
     t.integer  "rotation_frequency"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "rotation_status",    :default => 1
   end
 
 end
